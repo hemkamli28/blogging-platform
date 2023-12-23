@@ -1,0 +1,326 @@
+{
+	"info": {
+		"_postman_id": "509e6564-8bac-4bbb-8bd9-abecfcfd4c05",
+		"name": "Blogging Platform REST API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31969941"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get all Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://13.127.148.151/api/user/all",
+							"protocol": "https",
+							"host": [
+								"13",
+								"127",
+								"148",
+								"151"
+							],
+							"path": [
+								"api",
+								"user",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"testuser1@gmail.com\",\r\n    \"password\": \"Testuser@1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://13.127.148.151/api/user/register",
+							"protocol": "https",
+							"host": [
+								"13",
+								"127",
+								"148",
+								"151"
+							],
+							"path": [
+								"api",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"testuser1@gmail.com\",\r\n    \"password\": \"Testuser@1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://13.127.148.151/api/user/login",
+							"protocol": "https",
+							"host": [
+								"13",
+								"127",
+								"148",
+								"151"
+							],
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Blogs",
+			"item": [
+				{
+					"name": "Get all Blogs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://13.127.148.151/api/blog/all",
+							"protocol": "https",
+							"host": [
+								"13",
+								"127",
+								"148",
+								"151"
+							],
+							"path": [
+								"api",
+								"blog",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a Blog",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoidGVzdHVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE3MDMzMTYyMzl9.zMlLcdwk4IJcYG3zm8qjqCtD935FA-B9S5rvNrqqZFc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"title\": \"RESTful Services\",\r\n    \"description\": \"building resful services using NODEjs!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://13.127.148.151/api/blog/new",
+							"protocol": "https",
+							"host": [
+								"13",
+								"127",
+								"148",
+								"151"
+							],
+							"path": [
+								"api",
+								"blog",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Blog",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoidGVzdHVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE3MDMzMTYyMzl9.zMlLcdwk4IJcYG3zm8qjqCtD935FA-B9S5rvNrqqZFc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Updated description: NodeJs is very helpful in building REST APIs!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://13.127.148.151/api/blog/update/65868b9a0d7ce139d41d2381",
+							"protocol": "https",
+							"host": [
+								"13",
+								"127",
+								"148",
+								"151"
+							],
+							"path": [
+								"api",
+								"blog",
+								"update",
+								"65868b9a0d7ce139d41d2381"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Blog",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoidGVzdHVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE3MDMzMTYyMzl9.zMlLcdwk4IJcYG3zm8qjqCtD935FA-B9S5rvNrqqZFc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://13.127.148.151/api/blog/delete/65868e64ff7b2ff4ed840fb2",
+							"protocol": "https",
+							"host": [
+								"13",
+								"127",
+								"148",
+								"151"
+							],
+							"path": [
+								"api",
+								"blog",
+								"delete",
+								"65868e64ff7b2ff4ed840fb2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Blog by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://13.127.148.151/api/blog/search?blogTitle=RESTful+Services",
+							"protocol": "https",
+							"host": [
+								"13",
+								"127",
+								"148",
+								"151"
+							],
+							"path": [
+								"api",
+								"blog",
+								"search"
+							],
+							"query": [
+								{
+									"key": "blogTitle",
+									"value": "RESTful+Services"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Blog by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://13.127.148.151/api/blog/individual/65868e7cff7b2ff4ed840fb6",
+							"protocol": "https",
+							"host": [
+								"13",
+								"127",
+								"148",
+								"151"
+							],
+							"path": [
+								"api",
+								"blog",
+								"individual",
+								"65868e7cff7b2ff4ed840fb6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
