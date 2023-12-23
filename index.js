@@ -2,12 +2,16 @@ require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
 const connectToMongo = require('./db');
+const path = require('path');
+const fs = require('fs');
+const https = require('https');
 const rateLimit = require('express-rate-limit');
 const app = express();
 const port = process.env.PORT || 3000;
 const userRoutes = require('./Routes/user');
 const blogRoutes = require('./Routes/blog');
 const Blog = require('./Models/blog');
+
 
 // Connect to MongoDB
 connectToMongo();
@@ -43,7 +47,13 @@ app.use('/api/user', userRoutes);
 // Blog routes
 app.use('/api/blog', blogRoutes);
 
+
+const httpsServer = https.createServer({
+    key: fs.readFileSync(path.join(__dirname, 'cert', 'key.pem')),
+    cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem')) 
+    }, app);
+
 // Start the server
-app.listen(port, () => {
+httpsServer.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
