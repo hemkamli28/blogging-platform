@@ -1,7 +1,7 @@
 const Blog = require("../Models/blog");
 const { validationResult } = require('express-validator');
 
-
+// Get all blogs
 const getBlogs = async (req, res) => {
     try {
         const blogs = await Blog.find();
@@ -11,6 +11,7 @@ const getBlogs = async (req, res) => {
     }
 }
 
+// Add a new blog
 const addBlog = async (req, res) => {
     try {
         const errors = validationResult(req);
@@ -28,6 +29,7 @@ const addBlog = async (req, res) => {
     }
 }
 
+// Update an existing blog
 const updateBlog = async (req, res) => {
     try {
         const errors = validationResult(req);
@@ -44,7 +46,7 @@ const updateBlog = async (req, res) => {
         }
         const updatedBlog = await Blog.findByIdAndUpdate(blogId, { title, description }, { new: true });
         if (!updatedBlog) {
-            return res.status(404).json({ success: false, message: 'blog not found' });
+            return res.status(404).json({ success: false, message: 'Blog not found' });
         }
         return res.status(200).json({ updatedBlog, success: true, message: 'Blog updated successfully!', });
 
@@ -53,7 +55,7 @@ const updateBlog = async (req, res) => {
     }
 }
 
-
+// Delete a blog
 const deleteBlog = async (req, res) => {
     try {
         const blogId = req.params.blogId;
@@ -72,6 +74,7 @@ const deleteBlog = async (req, res) => {
     }
 }
 
+// Search for a blog by title
 const searchBlog = async (req, res) => {
     try {
         const { blogTitle } = req.query;
@@ -86,6 +89,7 @@ const searchBlog = async (req, res) => {
     }
 }
 
+// Get a specific blog by ID
 const getBlog = async (req, res) => {
     try {
         const blogId = req.params.blogId;
@@ -95,6 +99,5 @@ const getBlog = async (req, res) => {
         return res.status(500).json({ success: false, error: error.message, message: "Internal Server error!", });
     }
 }
-
 
 module.exports = { getBlogs, getBlog, addBlog, updateBlog, deleteBlog, searchBlog }

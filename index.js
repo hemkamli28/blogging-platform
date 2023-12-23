@@ -12,7 +12,6 @@ const userRoutes = require('./Routes/user');
 const blogRoutes = require('./Routes/blog');
 const Blog = require('./Models/blog');
 
-
 // Connect to MongoDB
 connectToMongo();
 
@@ -47,13 +46,16 @@ app.use('/api/user', userRoutes);
 // Blog routes
 app.use('/api/blog', blogRoutes);
 
-
+// Create an HTTPS server with SSL/TLS certificates
 const httpsServer = https.createServer({
     key: fs.readFileSync(path.join(__dirname, 'cert', 'key.pem')),
     cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem')) 
-    }, app);
+}, app);
 
 // Start the server
 httpsServer.listen(port, () => {
-    console.log(`Listening on port ${port}`);
+    console.log(`Listening on port ${port} (HTTPS)`);
 });
+
+// Note: Make sure to replace 'cert/key.pem' and 'cert/cert.pem'
+// with the actual paths to your SSL certificate and private key files.
